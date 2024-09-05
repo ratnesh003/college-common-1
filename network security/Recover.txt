@@ -1,0 +1,3 @@
+Database: A database is a collection of related data which represents some aspect of the real world. A database system is designed to be built and populated with data for a certain task. 
+Database Management System (DBMS) is software for storing and retrieving users’ data while considering appropriate security measures. It consists of a group of programs that manipulate the database. The DBMS accepts the request for data from an application and instructs the operating system to provide the specific data. In large systems, a DBMS helps users and other third-party software to store and retrieve data. 
+Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems.

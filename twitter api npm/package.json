@@ -1,0 +1,16 @@
+{
+    "name": "twitter-api-npm",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "dev": "node app.js"
+    },
+    "type": "module",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "twitter-api-v2": "^1.17.2"
+    }
+}
