@@ -3,79 +3,76 @@ using namespace std;
 
 string railFenceEncryption(string text, int key)
 {
-	char rail[key][(text.length())];
+	char zigZajMap[key][(text.length())];
 
 	for (int i=0; i < key; i++)
 		for (int j = 0; j < text.length(); j++)
-			rail[i][j] = '\n';
+			zigZajMap[i][j] = '\n';
 
-	bool dir_down = false;
+	bool direction = false;
 	int row = 0, col = 0;
 
 	for (int i=0; i < text.length(); i++)
 	{
 		if (row == 0 || row == key-1)
-			dir_down = !dir_down;
+			direction = !direction;
 
-		rail[row][col++] = text[i];
+		zigZajMap[row][col++] = text[i];
 
-		dir_down?row++ : row--;
+		direction?row++ : row--;
 	}
 
 	string result;
 	for (int i=0; i < key; i++)
 		for (int j=0; j < text.length(); j++)
-			if (rail[i][j]!='\n')
-				result.push_back(rail[i][j]);
+			if (zigZajMap[i][j]!='\n')
+				result.push_back(zigZajMap[i][j]);
 
 	return result;
 }
 
 string railFenceDecryption(string cipher, int key)
 {
-	char rail[key][cipher.length()];
+	char zigZajMap[key][cipher.length()];
 
 	for (int i=0; i < key; i++)
 		for (int j=0; j < cipher.length(); j++)
-			rail[i][j] = '\n';
+			zigZajMap[i][j] = '\n';
 
-	bool dir_down;
+	bool direction = false;
 
 	int row = 0, col = 0;
 
 	for (int i=0; i < cipher.length(); i++)
 	{
-		if (row == 0)
-			dir_down = true;
-		if (row == key-1)
-			dir_down = false;
+		if (row == 0 || row == key-1)
+			direction = !direction;
 
-		rail[row][col++] = '*';
+		zigZajMap[row][col++] = '*';
 
-		dir_down?row++ : row--;
+		direction?row++ : row--;
 	}
 
 	int index = 0;
 	for (int i=0; i<key; i++)
 		for (int j=0; j<cipher.length(); j++)
-			if (rail[i][j] == '*' && index<cipher.length())
-				rail[i][j] = cipher[index++];
+			if (zigZajMap[i][j] == '*' && index<cipher.length())
+				zigZajMap[i][j] = cipher[index++];
 
 
 	string result;
+    direction = false;
 
 	row = 0, col = 0;
 	for (int i=0; i< cipher.length(); i++)
 	{
-		if (row == 0)
-			dir_down = true;
-		if (row == key-1)
-			dir_down = false;
+		if (row == 0 || row == key-1)
+			direction = !direction;
 
-		if (rail[row][col] != '*')
-			result.push_back(rail[row][col++]);
+		if (zigZajMap[row][col] != '*')
+			result.push_back(zigZajMap[row][col++]);
 
-		dir_down?row++: row--;
+		direction?row++: row--;
 	}
 	return result;
 }
