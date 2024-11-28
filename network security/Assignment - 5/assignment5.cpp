@@ -67,6 +67,9 @@ void adjoint()
 
 int modInverse(int A)
 {
+    if (__gcd(A, MOD) > 1) {
+        return -1;
+    }
     for (int X = 1; X < MOD; X++)
         if (((A % MOD) * (X % MOD)) % MOD == 1)
             return X;
